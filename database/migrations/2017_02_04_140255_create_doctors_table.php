@@ -19,9 +19,9 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->bigInteger('uid');
             $table->string('password');
-            $table->string('image');
-            $table->string('phone');
-            $table->string('address');
+            $table->string('image')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->text('details');
         });
     }

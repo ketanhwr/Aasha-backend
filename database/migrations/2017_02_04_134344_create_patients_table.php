@@ -19,12 +19,12 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->bigInteger('uid');
             $table->string('password');
-            $table->string('image');
-            $table->string('address');
-            $table->string('phone');
+            $table->string('image')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->tinyInteger('pregnant');
-            $table->timestamp('duedate');
-            $table->timestamp('conceivedate');
+            $table->timestamp('duedate')->nullable();
+            $table->timestamp('conceivedate')->nullable();
         });
     }
 
