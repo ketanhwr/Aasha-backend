@@ -26,8 +26,7 @@ class VisitController extends Controller
      */
     public function create()
     {
-        $visit = new \App\Visit($request->all());
-        $visit->save();
+        
     }
 
     /**
@@ -38,7 +37,9 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $visit = new \App\Visit($request->all());
+        $visit->save();
+        return $visit;
     }
 
     /**
@@ -49,7 +50,7 @@ class VisitController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Visit::where("id", $id)->get();
     }
 
     /**
@@ -72,7 +73,10 @@ class VisitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $visit = \App\Visit::find($id);
+        $visit->fill($request->all());
+        $visit->save();
+        return $visit;
     }
 
     /**

@@ -15,17 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('patients', 'PatientController');
+Route::resource('db/patients', 'PatientController');
 
-Route::resource('doctors', 'DoctorController');
+Route::resource('db/doctors', 'DoctorController');
 
-Route::resource('hospitals', 'HospitalController');
+Route::resource('db/hospitals', 'HospitalController');
 
-Route::get('appointments/patients/{id}', 'AppointmentController@Patient');
-Route::get('appointments/doctors/{id}', 'AppointmentController@Doctor');
-Route::get('appointments/hospitals/{id}', 'AppointmentController@Hospital');
-Route::resource('appointments', 'AppointmentController');
+Route::get('db/appointments/patients/{id}', 'AppointmentController@Patient');
+Route::get('db/appointments/doctors/{id}', 'AppointmentController@Doctor');
+Route::get('db/appointments/hospitals/{id}', 'AppointmentController@Hospital');
+Route::resource('db/appointments', 'AppointmentController');
 
-Route::get('visits/doctors/{id}', 'VisitController@Doctor');
-Route::get('visits/hospitals/{id}', 'VisitController@Hospital');
-Route::resource('visits', 'VisitController');
+Route::get('db/visits/doctors/{id}', 'VisitController@Doctor');
+Route::get('db/visits/hospitals/{id}', 'VisitController@Hospital');
+Route::resource('db/visits', 'VisitController');
+
+Route::post('db/login', 'LoginController@index');

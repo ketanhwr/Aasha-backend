@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,6 +37,7 @@ class PatientController extends Controller
     {
         $patient = new \App\Patient($request->all());
         $patient->save();
+        return $patient;
     }
 
     /**
@@ -47,7 +48,7 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Patient::where("id", $id)->get();
     }
 
     /**
@@ -70,7 +71,10 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $patient = \App\Patient::find($id);
+        $patient->fill($request->all());
+        $patient->save();
+        return $patient;
     }
 
     /**

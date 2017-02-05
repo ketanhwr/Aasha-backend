@@ -24,8 +24,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $appointment = new \App\Appointment($request->all());
-        $appointment->save();
+        
     }
 
     /**
@@ -36,7 +35,9 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $appointment = new \App\Appointment($request->all());
+        $appointment->save();
+        return $appointment;
     }
 
     /**
@@ -47,7 +48,7 @@ class AppointmentController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Appointment::where("id", $id)->get();
     }
 
     /**
@@ -70,7 +71,10 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appointment = \App\Appointment::find($id);
+        $appointment->fill($request->all());
+        $appointment->save();
+        return $appointment;
     }
 
     /**

@@ -24,8 +24,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $doctor = new \App\Doctor($request->all());
-        $doctor->save();
+        
     }
 
     /**
@@ -36,7 +35,9 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doctor = new \App\Doctor($request->all());
+        $doctor->save();
+        return $doctor;
     }
 
     /**
@@ -47,7 +48,7 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Doctor::where("id", $id)->get();
     }
 
     /**
@@ -70,7 +71,10 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor = \App\Doctor::find($id);
+        $doctor->fill($request->all());
+        $doctor->save();
+        return $doctor;
     }
 
     /**

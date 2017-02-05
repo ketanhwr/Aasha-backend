@@ -24,8 +24,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        $hospital = new \App\Hospital($request->all());
-        $hospital->save();
+        
     }
 
     /**
@@ -36,7 +35,9 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hospital = new \App\Hospital($request->all());
+        $hospital->save();
+        return $hospital;
     }
 
     /**
@@ -47,7 +48,7 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
-        //
+        return \App\Hospital::where("id", $id)->get();
     }
 
     /**
@@ -70,7 +71,10 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hospital = \App\Hospital::find($id);
+        $hospital->fill($request->all());
+        $hospital->save();
+        return $hospital;
     }
 
     /**
