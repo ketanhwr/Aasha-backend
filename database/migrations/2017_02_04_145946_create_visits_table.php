@@ -18,8 +18,8 @@ class CreateVisitsTable extends Migration
             $table->timestamps();
             $table->integer('doctor_id')->unsigned();
             $table->integer('hospital_id')->unsigned();
-            $table->timestamp('begin');
-            $table->timestamp('end');
+            $table->timestamp('begin')->nullable();
+            $table->timestamp('end')->nullable();
         });
     }
 

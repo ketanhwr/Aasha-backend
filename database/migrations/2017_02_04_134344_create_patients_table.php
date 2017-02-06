@@ -25,6 +25,7 @@ class CreatePatientsTable extends Migration
             $table->tinyInteger('pregnant');
             $table->timestamp('duedate')->nullable();
             $table->timestamp('conceivedate')->nullable();
+            $table->integer('hospital_id')->unsigned()->nullable();
         });
     }
 
