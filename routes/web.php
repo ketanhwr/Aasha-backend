@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hospitals/{id}', 'HomeController@index');
+
+Route::get('/appointments/{id}', 'AppointmentEditor@edit');
+Route::post('/appointments/{id}', 'AppointmentEditor@update');
+
 Route::resource('db/patients', 'PatientController');
 
 Route::resource('db/doctors', 'DoctorController');
