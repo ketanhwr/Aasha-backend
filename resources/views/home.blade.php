@@ -22,3 +22,11 @@
         Name: {{ $patient->name }} <br/>
     @endforeach
 </div>
+
+<div>
+    <h1> Visiting Doctors </h1>
+    @foreach($visiting_doctors as $doctor)
+        Name: {{ $doctor->doctor->name }} From: {{ $doctor->begin }} To: {{ $doctor->end }} <br/>
+    @endforeach
+
+</div>

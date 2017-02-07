@@ -22,7 +22,7 @@ class CreatePatientsTable extends Migration
             $table->string('image')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->tinyInteger('pregnant');
+            $table->boolean('pregnant');
             $table->timestamp('duedate')->nullable();
             $table->timestamp('conceivedate')->nullable();
             $table->integer('hospital_id')->unsigned()->nullable();

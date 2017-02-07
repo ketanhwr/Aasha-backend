@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\View;
 
 use \App\Appointment;
 
-class AppointmentEditor extends Controller
+class WebAppointmentController extends Controller
 {
     public function edit($id)
     {

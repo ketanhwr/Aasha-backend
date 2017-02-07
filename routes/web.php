@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hospitals/{id}', 'HomeController@index');
+Route::get('/hospitals/{id}', 'WebHospitalController@index');
 
-Route::get('/appointments/{id}', 'AppointmentEditor@edit');
-Route::post('/appointments/{id}', 'AppointmentEditor@update');
+Route::get('/appointments/{id}', 'WebAppointmentController@edit');
+Route::post('/appointments/{id}', 'WebAppointmentController@update');
 
 Route::resource('db/patients', 'PatientController');
 
