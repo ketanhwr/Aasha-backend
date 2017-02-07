@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use \Carbon\Carbon;
 
 use \App\Hospital;
 use \App\Appointment;
@@ -13,6 +14,7 @@ use \App\Visit;
 
 class WebHospitalController extends Controller
 {
+
     public function index($id)
     {
     	$hospital = Hospital::find($id);
@@ -24,6 +26,10 @@ class WebHospitalController extends Controller
     	}
 
     	$pregnant_patients = Patient::where('hospital_id', $id)->where('pregnant', '1')->get();
+    	foreach($pregnant_patients as $patient)
+    	{
+    		$patient->time_left = Carbon::createFromFormat('Y-m-d H:i:s', $patient->duedate)->diffForHumans(Carbon::now());
+    	}
 
     	$visits = Visit::where('hospital_id', $id)->get();
     	foreach($visits as $visit)
@@ -39,5 +45,11 @@ class WebHospitalController extends Controller
     	{
     		echo "Hospital does not exist!";
     	}
+    }
+
+    public function list()
+    {
+    	$hospitals = Hospital::all();
+    	return view('hospital_list')->with('hospitals', $hospitals);
     }
 }

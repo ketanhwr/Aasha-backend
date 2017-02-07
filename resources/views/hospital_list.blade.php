@@ -191,42 +191,16 @@ body {
     </head>
     <body>
         <div class="site-wrapper">
-
-
-
-
+<div class="site-wrapper-inner">
 <div>
-    <h2 class=".cover-heading"> {{ $hospital->name }} </h2>
-    <h3 st> {{ $hospital->address }} </h3>
-    <h3> {{ $hospital->phone }} </h3>
-    <h3> {{ $hospital->details }} </h3>
-
+  @foreach($hospitals as $hospital)
+    <a type="button" class="btn btn-secondary" style="margin: 10px 10px 10px 10px;font-size: 25px;" href="/hospitals/{{ $hospital->id }}">{{ $hospital->name }}</a><br/>
+  @endforeach
 </div>
 
-<div>
-    <h1> Appointments </h1>
-    @foreach($appointments as $appointment)
-        Name: {{ $appointment->patient->name }}, Time: {{ $appointment->time }}, Status: {{ $appointment->status }} <a href="/appointments/{{ $appointment->id }}">Edit</a> <br/>
-    @endforeach
 
 </div>
-
 <div>
-    <h1> Pregnant Patients </h1>
-    @foreach($pregnant_patients as $patient)
-        Name: {{ $patient->name }} Time Left: {{ $patient->time_left }} <br/>
-    @endforeach
-</div>
-
-<div>
-    <h1> Visiting Doctors </h1>
-    @foreach($visiting_doctors as $doctor)
-        Name: {{ $doctor->doctor->name }} From: {{ $doctor->begin }} To: {{ $doctor->end }} <br/>
-    @endforeach
-
-
-
-        </div></div>
 
 
 
