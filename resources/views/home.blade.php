@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Aasha</title>
+        <title>aasha</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,600" rel="stylesheet" type="text/css">
@@ -186,6 +186,13 @@ body {
     font-family: 'Raleway';
     font-weight: 500;
     font-size: 23px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.temp {
+    margin-left: 10px;
+    margin-right: 10px;
 }
         </style>
     </head>
@@ -196,35 +203,39 @@ body {
 
 
 <div>
-    <h2 class=".cover-heading"> {{ $hospital->name }} </h2>
-    <h3 st> {{ $hospital->address }} </h3>
-    <h3> {{ $hospital->phone }} </h3>
-    <h3> {{ $hospital->details }} </h3>
+    <h2 class="cover-heading"> {{ $hospital->name }} </h2>
+    <p class="lead"> {{ $hospital->address }}, {{ $hospital->phone }} </p>
+    <p class="lead"> {{ $hospital->details }} </p>
 
 </div>
 
-<div>
-    <h1> Appointments </h1>
+<div class="container">
+<div class="jumbotron" style="margin: 20px 20px 20px 20px;background-color: #444444;padding: 15px 15px 15px 15px;">
+    <p class="lead" style="font-size: 35px;"">Appointments</p>
     @foreach($appointments as $appointment)
-        Name: {{ $appointment->patient->name }}, Time: {{ $appointment->time }}, Status: {{ $appointment->status }} <a href="/appointments/{{ $appointment->id }}">Edit</a> <br/>
+        <div class="lead jumbotron" style="font-size: 1.3em;margin-top: 5px;margin-bottom: 5px; background-color: #333333;padding: 15px 15px 15px 15px;"><span class="temp">Name: {{ $appointment->patient->name }}</span><span class="temp">Time: {{ $appointment->time_left }}</span><span class="temp">Status: {{ $appointment->status }}</span><span class="temp" style="float:right;"> <a class="btn btn-info" href="/appointments/{{ $appointment->id }}">Edit</a></span> </div>
     @endforeach
 
 </div>
+</div>
 
-<div>
-    <h1> Pregnant Patients </h1>
+<div class="container">
+<div class="jumbotron" style="margin: 20px 20px 20px 20px;background-color: #444444;padding: 15px 15px 15px 15px;">
+    <p class="lead" style="font-size: 35px">Pregnant Patients</p>
     @foreach($pregnant_patients as $patient)
-        Name: {{ $patient->name }} Time Left: {{ $patient->time_left }} <br/>
+        <div class="lead jumbotron" style="font-size: 1.3em;margin-top: 5px;margin-bottom: 5px; background-color: #333333;padding: 15px 15px 15px 15px;"><span class="temp">Name: {{ $patient->name }}</span><span class="temp">Expected Delivery: {{ $patient->time_left }}</span><span class="temp" style="float:right;"> <a class="btn btn-info" href="/patients/{{ $patient->id }}">Details</a></span> </div>
     @endforeach
 </div>
+</div>
 
-<div>
-    <h1> Visiting Doctors </h1>
+<div class="container">
+<div class="jumbotron" style="margin: 20px 20px 20px 20px;background-color: #444444;padding: 15px 15px 15px 15px;">
+    <p class="lead" style="font-size: 35px">Visiting Doctors</p>
     @foreach($visiting_doctors as $doctor)
-        Name: {{ $doctor->doctor->name }} From: {{ $doctor->begin }} To: {{ $doctor->end }} <br/>
+    <div class="lead jumbotron" style="font-size: 1.3em;margin-top: 5px;margin-bottom: 5px; background-color: #333333;padding: 15px 15px 15px 15px;"><span class="temp">Name: {{ $doctor->doctor->name }}</span><span class="temp">From: {{ $doctor->begin }}</span><span class="temp">To: {{ $doctor->end }}</span><span class="temp" style="float:right;"> <a class="btn btn-info" href="/doctors/{{ $doctor->doctor->id }}">Details</a></span> </div>
     @endforeach
-
-
+</div>
+</div>
 
         </div></div>
 

@@ -19,10 +19,11 @@ class WebHospitalController extends Controller
     {
     	$hospital = Hospital::find($id);
 
-    	$appointments = Appointment::where('hospital_id', $id)->get();
+    	$appointments = Appointment::where('hospital_id', $id)->orderBy('time')->get();
     	foreach ($appointments as $appointment)
     	{
     		$appointment->patient = Patient::find($appointment->patient_id);
+            $appointment->time_left = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->time)->diffForHumans(Carbon::now());
     	}
 
     	$pregnant_patients = Patient::where('hospital_id', $id)->where('pregnant', '1')->get();

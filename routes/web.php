@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/doctors/{id}', 'WebDoctorController@index');
+Route::get('/patients/{id}', 'WebPatientController@index');
+
 Route::get('/hospitals', 'WebHospitalController@list');
 Route::get('/hospitals/{id}', 'WebHospitalController@index');
 

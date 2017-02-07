@@ -1,3 +1,5 @@
+
+</div>
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     <head>
@@ -184,24 +186,38 @@ body {
     font-family: 'Raleway';
     font-weight: 500;
     font-size: 23px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.temp {
+    margin-left: 10px;
+    margin-right: 10px;
 }
         </style>
     </head>
     <body>
         <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
 
-        
-        <form method = "POST">
-        <p class="lead">TIME: <input type="text" style="color:black;" value="{{ $appointment->time }}" name="time" /></p>
-        <p class="lead">STATUS: <input type="text" style="color:black;" value="{{ $appointment->status }}" name="status" /></p>
-        <input type="submit" value="Update" class="lead btn btn-success"/>
-        </form>
 
-      </div>
 
+<div class="inner cover">
+  <div class="cover-container">
+      <h2 class="cover-heading"> {{ $patient->name }} </h2>
+      <p class="lead"> {{ $patient->address }}</p>
+      <p class="lead"> {{ $patient->phone }} </p>
+      <p class="lead"> Conceive Date: {{ $patient->conceivedate }} </p>
+      <p class="lead"> Due Date: {{ $patient->duedate }} </p>
     </div>
+
+</div>
+
+
+
+        </div></div>
+
+
 
 
     </body>
